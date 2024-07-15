@@ -1,0 +1,52 @@
+1. Countries and their continents. Order the results by continent names.
+
+	SELECT CountryName, Continent
+	FROM Countries c
+	JOIN Continents ct ON c.Continent = ct.ContID
+	ORDER BY ct.Continent;
+2.
+	 SELECT ct.Continent, COUNT(c.CountryID) AS NumberOfCountries
+	 FROM Countries c
+	 JOIN Continents ct ON c.Continent = ct.ContID
+	 GROUP BY ct.Continent;
+3.
+	SELECT CountryName
+	FROM Countries c
+	LEFT JOIN Car_Makers cm ON c.CountryID = cm.Country
+	WHERE cm.Country IS NULL;
+4.
+	SELECT Maker
+	FROM Car_Makers cm
+	JOIN Countries c ON cm.Country = c.CountryID
+	WHERE c.CountryName = 'Japan';
+5.
+	SELECT Maker
+	FROM Car_Makers cm
+	JOIN Countries c ON cm.Country = c.CountryID
+	WHERE c.CountryName IN ('France', 'USA');
+6.
+	SELECT c.CountryName, ct.Continent
+	FROM Car_Makers cm
+	JOIN Countries c ON cm.Country = c.CountryID
+	JOIN Continents ct ON c.Continent = ct.ContID
+	WHERE cm.Maker = 'Volvo';
+7.
+	SELECT md.Model
+	FROM Model_Details md
+	JOIN Car_Makers cm ON md.Maker = cm.ID
+	WHERE cm.Maker = 'Ford Motor Company';
+8.
+	SELECT COUNT(md.ModelID) AS NumberOfCarModels
+	FROM Model_Details md
+	JOIN Car_Makers cm ON md.Maker = cm.ID
+	JOIN Countries c ON cm.Country = c.CountryID
+	WHERE c.CountryName = 'Germany';
+9.
+	SELECT md.Model, cm.Maker
+	FROM Model_Details md
+	JOIN Car_Makers cm ON md.Maker = cm.ID
+	JOIN Countries c ON cm.Country = c.CountryID
+	WHERE c.CountryName = 'Japan';
+
+
+10. Which car models have highest and lowest values of below attributes. Extract the car maker and geography (country and continent) information also:
